@@ -1,38 +1,27 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import ColorCounter from '../components/ColorCounter';
 
 const COLOR_INCREMENT = 10
 
 const SquareScreen = () => {
-  const [red, setRed] = useState(0);
-  const [green, setGreen] = useState(0);
-  const [blue, setBlue] = useState(0);
-  
-  const setColor = (color, change) => {
-    if (color === 'red') {
-      if (red + change > 255 || red + change < 0) {
-        return;
-      }else {
-        setRed(red + change);
-      }
-    }
-  }
+  const [state, dispatch] = useReducer(reducer, {red: 0, green: 0, blue: 0})
+  console.log(state)
   return (
     <View>
       <ColorCounter 
-        onIncrease={() => setColor('red', COLOR_INCREMENT)} 
-        onDecrease={() => setColor('red', COLOR_INCREMENT)}
+        onIncrease={() => } 
+        onDecrease={() => }
         color="Red" 
       />
       <ColorCounter 
-        onIncrease={() => setGreen(green + COLOR_INCREMENT)} 
-        onDecrease={() => setGreen(green - COLOR_INCREMENT)}
+        onIncrease={() => } 
+        onDecrease={() => }
         color="Green" 
       />
       <ColorCounter 
-        onIncrease={() => setBlue(blue + COLOR_INCREMENT)} 
-        onDecrease={() => setBlue(blue - COLOR_INCREMENT)}
+        onIncrease={() => } 
+        onDecrease={() => }
         color="Blue" 
       />
       <View style={{ height: 150, width: 150, backgroundColor: `rgb(${red},${green},${blue})`}} />
